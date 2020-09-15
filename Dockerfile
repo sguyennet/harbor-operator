@@ -10,7 +10,8 @@ COPY go.sum go.sum
 ENV CGO_ENABLED=0 \
     GOOS="linux" \
     GO_APP_PKG="github.com/goharbor/harbor-operator" \
-    GO111MODULE=on
+    GO111MODULE=on \
+    GOPROXY=goproxy.cn
 
 # Copy the go source
 COPY main.go main.go
