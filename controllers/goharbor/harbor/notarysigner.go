@@ -68,6 +68,10 @@ func (r *Reconciler) GetNotarySignerCertificateAuthority(ctx context.Context, ha
 	}
 
 	return &certv1.Certificate{
+		TypeMeta: metav1.TypeMeta{
+			Kind:       certv1.CertificateKind,
+			APIVersion: certv1.SchemeGroupVersion.String(),
+		},
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      r.NormalizeName(ctx, harbor.GetName(), controllers.NotarySigner.String(), "authentication", "authority"),
 			Namespace: harbor.GetNamespace(),
@@ -155,6 +159,10 @@ func (r *Reconciler) AddNotarySignerCertificateAuthorityIssuer(ctx context.Conte
 
 func (r *Reconciler) GetNotarySignerCertificateAuthorityIssuer(ctx context.Context, harbor *goharborv1alpha2.Harbor) (*certv1.Issuer, error) {
 	return &certv1.Issuer{
+		TypeMeta: metav1.TypeMeta{
+			Kind:       certv1.IssuerKind,
+			APIVersion: certv1.SchemeGroupVersion.String(),
+		},
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      r.NormalizeName(ctx, harbor.GetName(), controllers.NotarySigner.String(), "authentication", "authority"),
 			Namespace: harbor.GetNamespace(),
@@ -201,6 +209,10 @@ func (r *Reconciler) AddNotarySignerCertificateIssuer(ctx context.Context, harbo
 
 func (r *Reconciler) GetNotarySignerCertificateIssuer(ctx context.Context, harbor *goharborv1alpha2.Harbor) (*certv1.Issuer, error) {
 	return &certv1.Issuer{
+		TypeMeta: metav1.TypeMeta{
+			Kind:       certv1.IssuerKind,
+			APIVersion: certv1.SchemeGroupVersion.String(),
+		},
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      r.NormalizeName(ctx, harbor.GetName(), controllers.NotarySigner.String(), "authentication"),
 			Namespace: harbor.GetNamespace(),
@@ -281,6 +293,10 @@ func (r *Reconciler) GetNotarySignerCertificate(ctx context.Context, harbor *goh
 	secretName := r.NormalizeName(ctx, harbor.GetName(), controllers.NotarySigner.String(), "authentication")
 
 	return &certv1.Certificate{
+		TypeMeta: metav1.TypeMeta{
+			Kind:       certv1.CertificateKind,
+			APIVersion: certv1.SchemeGroupVersion.String(),
+		},
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      r.NormalizeName(ctx, harbor.GetName(), controllers.NotarySigner.String(), "authentication"),
 			Namespace: harbor.GetNamespace(),

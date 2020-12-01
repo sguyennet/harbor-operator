@@ -238,6 +238,10 @@ func (r *Reconciler) GetCoreTokenCertificate(ctx context.Context, harbor *goharb
 	secretName := r.NormalizeName(ctx, harbor.GetName(), controllers.Core.String(), "tokencert")
 
 	return &certv1.Certificate{
+		TypeMeta: metav1.TypeMeta{
+			Kind:       certv1.CertificateKind,
+			APIVersion: certv1.SchemeGroupVersion.String(),
+		},
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      name,
 			Namespace: namespace,

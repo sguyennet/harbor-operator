@@ -94,6 +94,10 @@ func (r *Reconciler) GetInternalTLSCertificateAuthority(ctx context.Context, har
 	}
 
 	return &certv1.Certificate{
+		TypeMeta: metav1.TypeMeta{
+			Kind:       certv1.CertificateKind,
+			APIVersion: certv1.SchemeGroupVersion.String(),
+		},
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      r.NormalizeName(ctx, harbor.GetName(), "internal", "authority"),
 			Namespace: harbor.GetNamespace(),
@@ -118,6 +122,10 @@ func (r *Reconciler) GetInternalTLSCertificateAuthorityIssuer(ctx context.Contex
 	}
 
 	return &certv1.Issuer{
+		TypeMeta: metav1.TypeMeta{
+			Kind:       certv1.IssuerKind,
+			APIVersion: certv1.SchemeGroupVersion.String(),
+		},
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      r.NormalizeName(ctx, harbor.GetName(), "internal", "authority"),
 			Namespace: harbor.GetNamespace(),
@@ -136,6 +144,10 @@ func (r *Reconciler) GetInternalTLSIssuer(ctx context.Context, harbor *goharborv
 	}
 
 	return &certv1.Issuer{
+		TypeMeta: metav1.TypeMeta{
+			Kind:       certv1.IssuerKind,
+			APIVersion: certv1.SchemeGroupVersion.String(),
+		},
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      r.NormalizeName(ctx, harbor.GetName(), "internal"),
 			Namespace: harbor.GetNamespace(),
@@ -185,6 +197,10 @@ func (r *Reconciler) GetInternalTLSCertificate(ctx context.Context, harbor *goha
 	}
 
 	return &certv1.Certificate{
+		TypeMeta: metav1.TypeMeta{
+			Kind:       certv1.CertificateKind,
+			APIVersion: certv1.SchemeGroupVersion.String(),
+		},
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      r.GetInternalTLSCertificateName(ctx, harbor, component),
 			Namespace: harbor.GetNamespace(),
